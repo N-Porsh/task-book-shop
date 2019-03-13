@@ -43,3 +43,7 @@ $container['App\Domains\Store\StoreController'] = function ($c) {
 	return new \App\Domains\Store\StoreController($c['logger']);
 };
 
+$container['App\Domains\User\UserController'] = function ($c) {
+	return new \App\Domains\User\UserController($c['logger']);
+};
+
