@@ -24,10 +24,16 @@ $container['db'] = function ($c) use ($container) {
 	return $container->get('settings')['db'];
 };
 
-$container[\Monolog\Logger::class] = function ($c) {
+$container['logger'] = function ($c) {
 	$settings = $c->get('settings')['logger'];
 	$logger = new Monolog\Logger($settings['name']);
 	$logger->pushProcessor(new Monolog\Processor\UidProcessor());
 	$logger->pushHandler(new Monolog\Handler\StreamHandler($settings['path'], $settings['level']));
 	return $logger;
 };
+
+/** Controllers: **/
+$container['App\Domains\Store\StoreController'] = function ($c) {
+	return new \App\Domains\Store\StoreController($c['logger']);
+};
+
