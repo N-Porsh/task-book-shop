@@ -26,7 +26,7 @@ class StoreController
 	public function __invoke($request, $response)
 	{
 		$this->logger->info("Getting all products");
-		$data = Products::all();
+		$data = Product::all();
 		return $response->withJson($data, 200);
 	}
 
