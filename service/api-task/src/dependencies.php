@@ -20,8 +20,11 @@ $container['notFoundHandler'] = function ($c) {
 	};
 };
 
+$container['db'] = function ($c) use ($container) {
+	return $container->get('settings')['db'];
+};
 
-$container['logger'] = function ($c) {
+$container[\Monolog\Logger::class] = function ($c) {
 	$settings = $c->get('settings')['logger'];
 	$logger = new Monolog\Logger($settings['name']);
 	$logger->pushProcessor(new Monolog\Processor\UidProcessor());

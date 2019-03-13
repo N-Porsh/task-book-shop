@@ -1,4 +1,6 @@
 <?php
-$app->group('/api/v1', function (\Slim\App $app) {
 
+$app->get('/healthcheck', function ($request, $response) {
+	$this->logger->info("Service health check");
+	return $response->withJson(["status"=> "OK"], 200);
 });
