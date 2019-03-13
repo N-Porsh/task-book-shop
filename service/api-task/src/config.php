@@ -7,11 +7,14 @@ return [
 
 		// Database settings
 		'db' => [
-			'db_host' => 'localhost',
-			'db_port' => '',
-			'db_name' => 'task_db',
-			'db_user' => 'root',
-			'db_pass' => '12345678'
+			'driver' => 'mysql',
+			'host' => 'localhost',
+			'database' => 'task_db',
+			'username' => 'root',
+			'password' => '12345678',
+			'charset'   => 'utf8',
+			'collation' => 'utf8_unicode_ci',
+			'prefix'    => '',
 		],
 
 		// Monolog settings
