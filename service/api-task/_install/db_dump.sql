@@ -5,8 +5,8 @@ CREATE TABLE IF NOT EXISTS `task_db`.`users` (
   `username` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `password` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `created_ts` timestamp DEFAULT CURRENT_TIMESTAMP ,
-  `updated_ts` timestamp DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP ,
+  `created_at` timestamp DEFAULT CURRENT_TIMESTAMP ,
+  `updated_at` timestamp DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP ,
 
   PRIMARY KEY (`id`),
   UNIQUE KEY `username` (`username`),
@@ -19,8 +19,8 @@ CREATE TABLE IF NOT EXISTS `task_db`.`users_details` (
  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
  `surname` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
  `birth_date` date NOT NULL,
- `created_ts` timestamp DEFAULT CURRENT_TIMESTAMP ,
- `updated_ts` timestamp DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP ,
+ `created_at` timestamp DEFAULT CURRENT_TIMESTAMP ,
+ `updated_at` timestamp DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP ,
 
  PRIMARY KEY (`id`),
  UNIQUE KEY `id` (`id`),
@@ -34,8 +34,8 @@ CREATE TABLE IF NOT EXISTS `task_db`.`products` (
   `price` DECIMAL(10, 2) NOT NULL,
   `description` TEXT COLLATE utf8_unicode_ci NOT NULL,
   `quantity` smallint NOT NULL,
-  `created_ts` timestamp DEFAULT CURRENT_TIMESTAMP ,
-  `updated_ts` timestamp DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP ,
+  `created_at` timestamp DEFAULT CURRENT_TIMESTAMP ,
+  `updated_at` timestamp DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP ,
 
   PRIMARY KEY (`id`),
   UNIQUE KEY `id` (`id`),
@@ -48,8 +48,8 @@ CREATE TABLE IF NOT EXISTS `task_db`.`transactions` (
   `product_id` int(11) NOT NULL,
   `status` VARCHAR(100) COLLATE utf8_unicode_ci NOT NULL,
   `description` VARCHAR(255) COLLATE utf8_unicode_ci NOT NULL,
-  `created_ts` timestamp DEFAULT CURRENT_TIMESTAMP ,
-  `updated_ts` timestamp DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP ,
+  `created_at` timestamp DEFAULT CURRENT_TIMESTAMP ,
+  `updated_at` timestamp DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP ,
 
   PRIMARY KEY (`id`),
   UNIQUE KEY `user_id` (`user_id`),

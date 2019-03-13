@@ -21,15 +21,12 @@ class StoreController
 	 * Get All products from the store
 	 * @param $request
 	 * @param $response
-	 * @param $args
 	 * @return mixed
 	 */
-	public function __invoke($request, $response, $args)
+	public function __invoke($request, $response)
 	{
 		$this->logger->info("Getting all products");
-		$product = new StoreModel();
-		$data = $product->getProducts();
-
+		$data = Products::all();
 		return $response->withJson($data, 200);
 	}
 
