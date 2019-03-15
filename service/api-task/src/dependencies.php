@@ -47,3 +47,6 @@ $container['App\Domains\User\UserController'] = function ($c) {
 	return new \App\Domains\User\UserController($c['logger']);
 };
 
+$container['App\Domains\Transaction\TransactionController'] = function ($c) {
+	return new \App\Domains\Transaction\TransactionController($c['logger']);
+};

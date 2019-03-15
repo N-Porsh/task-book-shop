@@ -27,28 +27,53 @@ class UserController
 
 	public function show($request, $response, $args)
 	{
-		$this->logger->info("Getting user information ");
-		$data = User::find($args['id']);
-		return $response->withJson($data, 200);
+		$this->logger->info("Getting user information");
+		try {
+			$user = User::findUser($args['id']);
+			return $response->withJson($user, 200);
+		} catch (\Exception $e) {
+			return $response->withJson(['status' => $e->getMessage()], $e->getCode());
+		}
 	}
 
 	public function register($request, $response, $args)
 	{
 		$this->logger->info("Creating new user ");
-		$req = $request->getParsedBody();
-		$data = User::create(['username' => $req['username'], 'email' => $req['email'], 'password' => $req['password']]);
+		$data = User::create($request->getParsedBody());
 		return $response->withJson($data, 201);
 	}
 
 	public function unregister($request, $response, $args)
 	{
 		$this->logger->info("Delete user");
-		User::destroy($args['id']);
-		return $response->withJson(null, 200);
+		$deleted = User::destroy($args['id']);
+		if (!$deleted) {
+			return $response->withJson(['status' => 'Nothing was deleted']);
+		}
+		return $response->withStatus(200);
 	}
 
 	public function update($request, $response, $args)
 	{
-		$this->logger->info("Updating user details");
+		$this->logger->info("Getting user information");
+		try {
+			$user = User::findUser($args['id']);
+			$this->logger->info("Updating user details");
+			$user->update($request->getParsedBody());
+			return $response->withJson($user, 200);
+		} catch (\Exception $e) {
+			return $response->withJson(['status' => $e->getMessage()], $e->getCode());
+		}
+	}
+
+	public function buy($request, $response, $args)
+	{
+		$data = $request->getParsedBody();
+		try {
+			User::buyItems($args['id'], $data['products']);
+		} catch (\Exception $e) {
+			return $response->withJson(['status' => $e->getMessage()], $e->getCode());
+		}
+
 	}
 }
