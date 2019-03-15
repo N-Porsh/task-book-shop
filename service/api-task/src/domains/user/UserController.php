@@ -39,7 +39,11 @@ class UserController
 	public function register($request, $response, $args)
 	{
 		$this->logger->info("Creating new user ");
-		$data = User::create($request->getParsedBody());
+		try {
+			$data = User::create($request->getParsedBody());
+		} catch (\Exception $e) {
+			return $response->withJson(['status' => "Could not create user"], 400);
+		}
 		return $response->withJson($data, 201);
 	}
 

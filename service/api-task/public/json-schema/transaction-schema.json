@@ -1,0 +1,101 @@
+{
+    "swagger": "2.0",
+    "host": "localhost",
+    "consumes": [
+        "application/json"
+    ],
+    "produces": [
+        "application/json"
+    ],
+    "info": {
+        "version": "1.0.0",
+        "title": "API Test assignment"
+    },
+    "paths": {
+        "api/v1/transactions": {
+            "get": {
+                "description": "Get all transactions",
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "schema": {
+                            "title": "ArrayOfTransactions",
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Transaction"
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Indicates problem on a server"
+                    }
+                }
+            }
+        },
+        "api/v1/transactions/{transaction_id}": {
+            "get": {
+                "description": "Gets transactions by Transaction Id",
+                "responses": {
+                    "200": {
+                        "description": "Transaction found",
+                        "schema": {
+                            "$ref": "#/definitions/Transaction"
+                        }
+                    },
+                    "404": {
+                        "description": "Indicates that the transaction not found with given transaction_id"
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "transaction_id",
+                        "in": "path",
+                        "type": "number",
+                        "required": true
+                    }
+                ]
+            }
+        },
+        "api/v1/transactions/user/{user_id}": {
+            "get": {
+                "description": "Gets transactions by user Id",
+                "responses": {
+                    "200": {
+                        "description": "Transaction found",
+                        "schema": {
+                            "$ref": "#/definitions/Transaction"
+                        }
+                    },
+                    "404": {
+                        "description": "Indicates that the transaction not found with given transaction_id"
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "user_id",
+                        "in": "path",
+                        "type": "number",
+                        "required": true
+                    }
+                ]
+            }
+        }
+    },
+    "definitions": {
+        "Transaction": {
+            "type": "object",
+            "properties": {
+                "product_id": {
+                    "type": "number",
+                    "minimum": 0
+                },
+                "status": {
+                    "type": "string",
+                    "maxLength": 100
+                }
+            },
+            "additionalProperties": false,
+            "required": ["product_id", "status"]
+        }
+    }
+}

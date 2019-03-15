@@ -30,4 +30,10 @@ class StoreController
 		return $response->withJson($data, 200);
 	}
 
+	public function add($request, $response, $args)
+	{
+		$this->logger->info("Add new product");
+		$data = Product::create($request->getParsedBody());
+		return $response->withJson($data, 201);
+	}
 }
