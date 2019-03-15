@@ -4,6 +4,7 @@
 .key
 .vagrant
 service/api-task/vendor
+logs/
 node_modules
 ._.DS_Store
 .DS_Store
