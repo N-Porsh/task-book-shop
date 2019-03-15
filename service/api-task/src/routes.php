@@ -5,7 +5,7 @@ $app->get('/healthcheck', function ($request, $response) {
 	return $response->withJson(["status" => "OK"], 200);
 });
 
-$app->group('/api/v1', function (\Slim\App $app) use ($validation) {
+$app->group('/api/v1', function (\Slim\App $app) {
 	$ci = $app->getContainer();
 
 	$app->group('/store', function (\Slim\App $app) use ($ci) {
