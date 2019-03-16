@@ -16,21 +16,6 @@ CREATE TABLE IF NOT EXISTS `task_db`.`users` (
   INDEX (`username`, `email`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
-/*CREATE TABLE IF NOT EXISTS `task_db`.`users_details` (
- `id` int(11) NOT NULL AUTO_INCREMENT,
- `user_id` int(11) NOT NULL,
- `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
- `surname` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
- `birth_date` date NOT NULL,
- `created_at` timestamp DEFAULT CURRENT_TIMESTAMP ,
- `updated_at` timestamp DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP ,
-
- PRIMARY KEY (`id`),
- UNIQUE KEY `id` (`id`),
- INDEX (`user_id`)
-  ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;*/
-
-
 CREATE TABLE IF NOT EXISTS `task_db`.`products` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(100) COLLATE utf8_unicode_ci NOT NULL,
